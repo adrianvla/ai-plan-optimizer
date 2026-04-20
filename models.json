@@ -54,12 +54,6 @@
       "benchmarks": {
         "swe_verified": 82.0,
         "swe_rank": 1
-      },
-      "api_rate": {
-        "input": 5.0,
-        "output": 25.0,
-        "cached": 0.5,
-        "cache_hit_rate": 0.6
       }
     },
     "anthropic/claude-opus-4-6": {
@@ -77,12 +71,6 @@
       "benchmarks": {
         "swe_verified": 78.2,
         "swe_rank": 4
-      },
-      "api_rate": {
-        "input": 5.0,
-        "output": 25.0,
-        "cached": 0.5,
-        "cache_hit_rate": 0.6
       }
     },
     "anthropic/claude-sonnet-4-6": {
@@ -101,12 +89,6 @@
       "benchmarks": {
         "swe_verified": 77.4,
         "swe_rank": 6
-      },
-      "api_rate": {
-        "input": 3.0,
-        "output": 15.0,
-        "cached": 0.3,
-        "cache_hit_rate": 0.6
       }
     },
     "anthropic/claude-haiku-4-5": {
@@ -122,12 +104,6 @@
       "benchmarks": {
         "swe_verified": 66.6,
         "swe_rank": 29
-      },
-      "api_rate": {
-        "input": 1.0,
-        "output": 5.0,
-        "cached": 0.1,
-        "cache_hit_rate": 0.6
       }
     },
     "openai/gpt-5-4": {
@@ -145,12 +121,6 @@
       "benchmarks": {
         "swe_verified": 78.2,
         "swe_rank": 3
-      },
-      "api_rate": {
-        "input": 2.5,
-        "output": 15.0,
-        "cached": 0.25,
-        "cache_hit_rate": 0.6
       }
     },
     "openai/gpt-5-3-codex": {
@@ -167,12 +137,6 @@
       "benchmarks": {
         "swe_verified": 78.0,
         "swe_rank": 5
-      },
-      "api_rate": {
-        "input": 1.5,
-        "output": 6.0,
-        "cached": 0.15,
-        "cache_hit_rate": 0.6
       }
     },
     "openai/gpt-5-2": {
@@ -188,12 +152,6 @@
       "benchmarks": {
         "swe_verified": 75.8,
         "swe_rank": 10
-      },
-      "api_rate": {
-        "input": 1.25,
-        "output": 10.0,
-        "cached": 0.1,
-        "cache_hit_rate": 0.6
       }
     },
     "openai/gpt-5-4-mini": {
@@ -210,12 +168,6 @@
       "benchmarks": {
         "swe_verified": 73.0,
         "swe_rank": 17
-      },
-      "api_rate": {
-        "input": 0.75,
-        "output": 4.5,
-        "cached": 0.075,
-        "cache_hit_rate": 0.6
       }
     },
     "google/gemini-3-1-pro": {
@@ -233,12 +185,6 @@
       "benchmarks": {
         "swe_verified": 78.8,
         "swe_rank": 2
-      },
-      "api_rate": {
-        "input": 2.0,
-        "output": 12.0,
-        "cached": 0.2,
-        "cache_hit_rate": 0.6
       }
     },
     "google/gemini-3-pro": {
@@ -255,12 +201,6 @@
       "benchmarks": {
         "swe_verified": 76.4,
         "swe_rank": 8
-      },
-      "api_rate": {
-        "input": 2.0,
-        "output": 12.0,
-        "cached": 0.2,
-        "cache_hit_rate": 0.6
       }
     },
     "google/gemini-3-flash": {
@@ -277,12 +217,6 @@
       "benchmarks": {
         "swe_verified": 75.0,
         "swe_rank": 11
-      },
-      "api_rate": {
-        "input": 0.5,
-        "output": 3.0,
-        "cached": 0.05,
-        "cache_hit_rate": 0.6
       }
     },
     "zai/glm-5-1": {
@@ -300,12 +234,6 @@
         "swe_verified": 76.4,
         "swe_rank": 9,
         "swe_pro": 58.4
-      },
-      "api_rate": {
-        "input": 1.4,
-        "output": 4.4,
-        "cached": 0.19,
-        "cache_hit_rate": 0.6
       }
     },
     "zai/glm-5": {
@@ -321,12 +249,6 @@
       "benchmarks": {
         "swe_verified": 71.4,
         "swe_rank": 20
-      },
-      "api_rate": {
-        "input": 1.0,
-        "output": 3.2,
-        "cached": 0.2,
-        "cache_hit_rate": 0.6
       }
     },
     "zai/glm-4-7": {
@@ -342,12 +264,6 @@
       "benchmarks": {
         "swe_verified": 69.4,
         "swe_rank": 26
-      },
-      "api_rate": {
-        "input": 0.6,
-        "output": 2.2,
-        "cached": 0.11,
-        "cache_hit_rate": 0.6
       }
     },
     "zai/glm-4-5-flash": {
@@ -362,12 +278,6 @@
       "benchmarks": {
         "swe_verified": 0.0,
         "swe_rank": 99
-      },
-      "api_rate": {
-        "input": 0.0,
-        "output": 0.0,
-        "cached": 0.0,
-        "cache_hit_rate": 0.0
       }
     },
     "moonshot/kimi-k2-6": {
@@ -384,12 +294,6 @@
         "swe_verified": 70.0,
         "swe_rank": 22,
         "swe_pro": 58.6
-      },
-      "api_rate": {
-        "input": 0.6,
-        "output": 3.0,
-        "cached": 0.1,
-        "cache_hit_rate": 0.6
       }
     },
     "moonshot/kimi-k2-5": {
@@ -405,12 +309,6 @@
       "benchmarks": {
         "swe_verified": 70.0,
         "swe_rank": 22
-      },
-      "api_rate": {
-        "input": 0.6,
-        "output": 3.0,
-        "cached": 0.1,
-        "cache_hit_rate": 0.6
       }
     },
     "minimax/minimax-m2-5": {
@@ -427,12 +325,6 @@
       "benchmarks": {
         "swe_verified": 74.2,
         "swe_rank": 14
-      },
-      "api_rate": {
-        "input": 0.3,
-        "output": 1.2,
-        "cached": 0.03,
-        "cache_hit_rate": 0.6
       }
     },
     "minimax/minimax-m2-7": {
@@ -449,12 +341,6 @@
       "benchmarks": {
         "swe_verified": 73.8,
         "swe_rank": 15
-      },
-      "api_rate": {
-        "input": 0.3,
-        "output": 1.2,
-        "cached": 0.06,
-        "cache_hit_rate": 0.6
       }
     },
     "mistral/devstral-2": {
@@ -470,12 +356,6 @@
       "benchmarks": {
         "swe_verified": 62.8,
         "swe_rank": 32
-      },
-      "api_rate": {
-        "input": 0.0,
-        "output": 0.0,
-        "cached": 0.0,
-        "cache_hit_rate": 0.0
       }
     }
   },
@@ -499,9 +379,9 @@
       },
       "quota": {
         "tokens_per_day": 211200,
-        "notes": "~44K tokens per 5h window \u00d7 4.8 windows/day. Shared across all models in plan."
+        "notes": "~44K tokens per 5h window \u00d7 4.8 windows/day. Shared across all models."
       },
-      "notes": "No Opus 4.7. Quota shared pool across all agents using this plan."
+      "notes": "No Opus 4.7. ~45 Sonnet msgs per 5h window before throttle. Quota shared pool."
     },
     {
       "id": "claude-max-5x",
@@ -524,10 +404,10 @@
         }
       },
       "quota": {
-        "tokens_per_day": 422400,
-        "notes": "5\u00d7 Pro quota. Priority access."
+        "tokens_per_day": 1056000,
+        "notes": "5\u00d7 Pro quota. ~225 msgs per 5h. Priority access during peak."
       },
-      "notes": "First Claude plan that includes Opus 4.7."
+      "notes": "First Claude plan with Opus 4.7. ~225 Sonnet msgs per 5h window."
     },
     {
       "id": "claude-max-20x",
@@ -550,9 +430,10 @@
         }
       },
       "quota": {
-        "tokens_per_day": 1056000,
-        "notes": "20\u00d7 Pro quota. Zero-wait priority."
-      }
+        "tokens_per_day": 4224000,
+        "notes": "20\u00d7 Pro quota. ~900 msgs per 5h. Effectively unlimited for individuals."
+      },
+      "notes": "Effectively unlimited. Zero-wait priority. Best for all-day agentic workflows."
     },
     {
       "id": "chatgpt-plus",
@@ -564,14 +445,18 @@
         "openai/gpt-5-4": {
           "request_weight": 1.0
         },
+        "openai/gpt-5-2": {
+          "request_weight": 1.0
+        },
         "openai/gpt-5-4-mini": {
           "request_weight": 1.0
         }
       },
       "quota": {
-        "tokens_per_day": 336000,
-        "notes": "~168 Codex CLI msgs per 5h window \u00d7 2K avg tokens \u00d7 4.8 windows/day."
-      }
+        "tokens_per_day": 320000,
+        "notes": "~160 msgs per 3h with GPT-5.2. Falls back to mini at limit. 10 Deep Research/mo."
+      },
+      "notes": "32K context. 10 Deep Research queries/mo. 50 Sora videos. Falls back to mini at limit."
     },
     {
       "id": "chatgpt-pro",
@@ -594,9 +479,10 @@
         }
       },
       "quota": {
-        "tokens_per_day": 2240000,
-        "notes": "~1120 msgs per 5h window. 10\u00d7 Plus. Unlocks GPT-5.3 Codex."
-      }
+        "tokens_per_day": 6400000,
+        "notes": "Effectively unlimited. 128K context. Codex doubled usage + priority."
+      },
+      "notes": "128K context (4\u00d7 Plus). Unlimited GPT-5.2 + Pro mode. 120 Deep Research/mo. Priority Codex."
     },
     {
       "id": "cursor-pro",
@@ -607,28 +493,35 @@
       "credit_pool_usd": 20,
       "models": {
         "anthropic/claude-opus-4-7": {
-          "request_weight": 7.5
+          "request_weight": 7.5,
+          "cache_hit_rate": 0.9
         },
         "anthropic/claude-opus-4-6": {
-          "request_weight": 7.5
+          "request_weight": 7.5,
+          "cache_hit_rate": 0.9
         },
         "anthropic/claude-sonnet-4-6": {
-          "request_weight": 4.5
+          "request_weight": 4.5,
+          "cache_hit_rate": 0.9
         },
         "openai/gpt-5-4": {
-          "request_weight": 1.0
+          "request_weight": 1.0,
+          "cache_hit_rate": 0.85
         },
         "openai/gpt-5-4-mini": {
-          "request_weight": 1.0
+          "request_weight": 0.33,
+          "cache_hit_rate": 0.85
         },
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0,
+          "cache_hit_rate": 0.8
         },
         "google/gemini-3-flash": {
-          "request_weight": 0.5
+          "request_weight": 0.33,
+          "cache_hit_rate": 0.8
         }
       },
-      "notes": "PURE PAY-PER-TOKEN. $20 credit pool billed at API rates. request_weight = relative token-cost multiplier vs gpt-5-4 (1.0 baseline). Opus 4.7 burns credits ~7.5\u00d7 faster."
+      "notes": "PURE PAY-PER-TOKEN. $20 credit pool at API rates. Auto mode = unlimited (no credits). Manual model selection draws from pool. ~225 Sonnet requests or ~550 Gemini requests per $20."
     },
     {
       "id": "cursor-pro-plus",
@@ -636,31 +529,38 @@
       "provider": "Cursor",
       "type": "per_token",
       "cost_usd_per_month": 60,
-      "credit_pool_usd": 70,
+      "credit_pool_usd": 60,
       "models": {
         "anthropic/claude-opus-4-7": {
-          "request_weight": 7.5
+          "request_weight": 7.5,
+          "cache_hit_rate": 0.9
         },
         "anthropic/claude-opus-4-6": {
-          "request_weight": 7.5
+          "request_weight": 7.5,
+          "cache_hit_rate": 0.9
         },
         "anthropic/claude-sonnet-4-6": {
-          "request_weight": 4.5
+          "request_weight": 4.5,
+          "cache_hit_rate": 0.9
         },
         "openai/gpt-5-4": {
-          "request_weight": 1.0
+          "request_weight": 1.0,
+          "cache_hit_rate": 0.85
         },
         "openai/gpt-5-4-mini": {
-          "request_weight": 1.0
+          "request_weight": 0.33,
+          "cache_hit_rate": 0.85
         },
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0,
+          "cache_hit_rate": 0.8
         },
         "google/gemini-3-flash": {
-          "request_weight": 0.5
+          "request_weight": 0.33,
+          "cache_hit_rate": 0.8
         }
       },
-      "notes": "$70 credit pool. ~3\u00d7 Pro."
+      "notes": "$60 credit pool. 3\u00d7 Pro. Same model access. For heavy manual-model users."
     },
     {
       "id": "cursor-ultra",
@@ -668,31 +568,38 @@
       "provider": "Cursor",
       "type": "per_token",
       "cost_usd_per_month": 200,
-      "credit_pool_usd": 400,
+      "credit_pool_usd": 200,
       "models": {
         "anthropic/claude-opus-4-7": {
-          "request_weight": 7.5
+          "request_weight": 7.5,
+          "cache_hit_rate": 0.9
         },
         "anthropic/claude-opus-4-6": {
-          "request_weight": 7.5
+          "request_weight": 7.5,
+          "cache_hit_rate": 0.9
         },
         "anthropic/claude-sonnet-4-6": {
-          "request_weight": 4.5
+          "request_weight": 4.5,
+          "cache_hit_rate": 0.9
         },
         "openai/gpt-5-4": {
-          "request_weight": 1.0
+          "request_weight": 1.0,
+          "cache_hit_rate": 0.85
         },
         "openai/gpt-5-4-mini": {
-          "request_weight": 1.0
+          "request_weight": 0.33,
+          "cache_hit_rate": 0.85
         },
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0,
+          "cache_hit_rate": 0.8
         },
         "google/gemini-3-flash": {
-          "request_weight": 0.5
+          "request_weight": 0.33,
+          "cache_hit_rate": 0.8
         }
       },
-      "notes": "$400 credit pool. ~20\u00d7 Pro."
+      "notes": "$200 credit pool. 20\u00d7 Pro. Priority access to new features. For all-day agent use."
     },
     {
       "id": "copilot-pro",
@@ -701,21 +608,33 @@
       "type": "recurrent",
       "cost_usd_per_month": 10,
       "models": {
-        "anthropic/claude-opus-4-6": {
-          "request_weight": 7.5
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-haiku-4-5": {
+          "request_weight": 0.33
         },
         "openai/gpt-5-4": {
           "request_weight": 1.0
         },
-        "google/gemini-3-pro": {
-          "request_weight": 3.5
+        "openai/gpt-5-2": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 0.33
+        },
+        "google/gemini-3-1-pro": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.33
         }
       },
       "quota": {
         "requests_per_month": 300,
-        "notes": "300 premium requests/month total across all models. $0.04/extra req."
+        "notes": "300 premium requests/month. GPT-5 mini is free/unlimited (0x). $0.04/extra premium req."
       },
-      "notes": "Very limited quota. Mainly useful as a cheap top-up plan."
+      "notes": "GPT-5 mini & GPT-4.1 unlimited (0x). Gemini = 1x. No Opus 4.7. $0.04/extra req."
     },
     {
       "id": "copilot-pro-plus",
@@ -727,18 +646,36 @@
         "anthropic/claude-opus-4-7": {
           "request_weight": 7.5
         },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-haiku-4-5": {
+          "request_weight": 0.33
+        },
         "openai/gpt-5-4": {
           "request_weight": 1.0
         },
+        "openai/gpt-5-3-codex": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-2": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 0.33
+        },
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.33
         }
       },
       "quota": {
         "requests_per_month": 1500,
-        "notes": "1,500 premium requests/month. 5\u00d7 Pro."
+        "notes": "1,500 premium requests/month. GPT-5 mini unlimited. Opus 4.7 at 7.5x. $0.04/extra."
       },
-      "notes": "Best value Copilot plan. Only plan with Opus 4.7."
+      "notes": "All frontier models. GPT-5 mini & GPT-4.1 unlimited. Opus 4.7 promotional 7.5x (until Apr 30 2026)."
     },
     {
       "id": "windsurf-pro",
@@ -751,65 +688,46 @@
           "request_weight": 7.5
         },
         "anthropic/claude-sonnet-4-6": {
-          "request_weight": 4.5
+          "request_weight": 1.0
         },
         "openai/gpt-5-4": {
           "request_weight": 1.0
         },
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0
         }
       },
       "quota": {
-        "tokens_per_day": 33333,
-        "notes": "500 credits/month with daily rate limits. Refreshes daily and weekly."
+        "tokens_per_day": 500000,
+        "notes": "Standard quota with daily+weekly refresh. Overage at API price. Unlimited Tab completion."
       },
-      "notes": "SWE-1 access. Daily rate limits make it unsuitable as a primary plan at volume."
+      "notes": "March 2026 pricing. Daily+weekly quota refresh. Overage at API rate. Unlimited Tab."
     },
     {
-      "id": "gemini-free",
-      "display_name": "Gemini Code Assist (Free)",
-      "provider": "Google",
+      "id": "windsurf-max",
+      "display_name": "Windsurf Max",
+      "provider": "Codeium",
       "type": "recurrent",
-      "cost_usd_per_month": 0,
+      "cost_usd_per_month": 200,
       "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
-        },
-        "google/gemini-3-pro": {
-          "request_weight": 3.5
-        },
-        "google/gemini-3-flash": {
-          "request_weight": 0.5
+          "request_weight": 1.0
         }
       },
       "quota": {
-        "tokens_per_day": 2000000,
-        "notes": "1,000 req/day \u00d7 ~2K tokens avg."
+        "tokens_per_day": 5000000,
+        "notes": "Heavy quota. Daily+weekly refresh. Overage at API price. For all-day power use."
       },
-      "notes": "Best free plan for creative tasks. No credit card required."
-    },
-    {
-      "id": "gemini-std",
-      "display_name": "Gemini Code Assist Standard",
-      "provider": "Google",
-      "type": "recurrent",
-      "cost_usd_per_month": 19,
-      "models": {
-        "google/gemini-3-1-pro": {
-          "request_weight": 3.5
-        },
-        "google/gemini-3-pro": {
-          "request_weight": 3.5
-        },
-        "google/gemini-3-flash": {
-          "request_weight": 0.5
-        }
-      },
-      "quota": {
-        "tokens_per_day": 3000000,
-        "notes": "1,500 req/day \u00d7 ~2K tokens avg."
-      }
+      "notes": "Power user tier. ~10\u00d7 Pro quota. Targets developers using Cascade all day."
     },
     {
       "id": "google-ai-pro",
@@ -819,145 +737,223 @@
       "cost_usd_per_month": 19.99,
       "models": {
         "google/gemini-3-1-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0
         },
         "google/gemini-3-pro": {
-          "request_weight": 3.5
+          "request_weight": 1.0
         },
         "google/gemini-3-flash": {
-          "request_weight": 0.5
+          "request_weight": 0.33
         }
       },
       "quota": {
-        "tokens_per_day": 3000000,
-        "notes": "1,500 CLI req/day. Includes Veo 3.1."
+        "tokens_per_day": 1000000,
+        "notes": "Higher access to Gemini 3.1 Pro + Deep Research. Gemini Code Assist included. $10/mo Google Cloud credits."
       },
-      "notes": "Essentially same as Gemini Std but targets CLI (gemini CLI) usage."
+      "notes": "Formerly Gemini Advanced/Google One AI Premium. Includes 5TB storage + Workspace integration."
+    },
+    {
+      "id": "gemini-free",
+      "display_name": "Gemini API Free",
+      "provider": "Google",
+      "type": "recurrent",
+      "cost_usd_per_month": 0,
+      "models": {
+        "google/gemini-3-1-pro": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-pro": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.33
+        }
+      },
+      "quota": {
+        "tokens_per_day": 150000,
+        "notes": "Rate-limited. Gemini 3.1 Pro: 50 req/day. Flash: 1500 req/day. No SLA."
+      },
+      "notes": "Google AI Studio free tier. Rate-limited but useful as free fallback."
     },
     {
       "id": "api-kimi-k2-6",
-      "display_name": "Kimi K2.6 API",
+      "display_name": "Moonshot API (Kimi K2.6)",
       "provider": "Moonshot",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "moonshot/kimi-k2-6": {
           "input_usd_per_m": 0.6,
           "output_usd_per_m": 3.0,
-          "cached_usd_per_m": 0.1
+          "cached_usd_per_m": 0.15,
+          "cache_hit_rate": 0.8
         }
       },
-      "notes": "Pure API. No subscription. Pricing unconfirmed \u2014 using K2.5 rate as proxy. SWE Pro #1."
+      "notes": "Released 2026-04-20. SWE-bench Pro #1 (58.6%). Priced at K2.5 rate. Best value agentic API."
     },
     {
       "id": "api-kimi-k2-5",
-      "display_name": "Kimi K2.5 API",
+      "display_name": "Moonshot API (Kimi K2.5)",
       "provider": "Moonshot",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "moonshot/kimi-k2-5": {
           "input_usd_per_m": 0.6,
           "output_usd_per_m": 3.0,
-          "cached_usd_per_m": 0.1
+          "cached_usd_per_m": 0.15,
+          "cache_hit_rate": 0.8
         }
       },
-      "notes": "Available on OpenRouter."
+      "notes": "Previous Kimi gen. Same price as K2.6, slightly lower benchmark."
     },
     {
       "id": "api-glm-5-1",
-      "display_name": "GLM-5.1 API",
-      "provider": "zAI",
+      "display_name": "ZAI API (GLM-5.1)",
+      "provider": "ZAI / OpenRouter",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "zai/glm-5-1": {
           "input_usd_per_m": 1.4,
           "output_usd_per_m": 4.4,
-          "cached_usd_per_m": 0.19
+          "cached_usd_per_m": 0.35,
+          "cache_hit_rate": 0.75
         }
       },
-      "notes": "Available via OpenRouter. MIT open-weight."
+      "notes": "MIT open-weight. SWE Pro 58.4% \u2014 GPT-5.4 level at ~30% of the price. Via OpenRouter."
     },
     {
       "id": "api-glm-4-7",
-      "display_name": "GLM-4.7 API",
-      "provider": "zAI",
+      "display_name": "ZAI API (GLM-4.7)",
+      "provider": "ZAI / OpenRouter",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "zai/glm-4-7": {
-          "input_usd_per_m": 0.6,
-          "output_usd_per_m": 2.2,
-          "cached_usd_per_m": 0.11
+          "input_usd_per_m": 0.5,
+          "output_usd_per_m": 1.3,
+          "cached_usd_per_m": 0.12,
+          "cache_hit_rate": 0.75
         }
-      }
+      },
+      "notes": "Cheap speed-tier. SWE 69.4%. Good for lightweight agentic tasks."
     },
     {
       "id": "api-glm-free",
-      "display_name": "GLM-4.5-Flash (Free)",
-      "provider": "zAI",
+      "display_name": "ZAI API (GLM-4.5 Flash \u2014 Free)",
+      "provider": "ZAI / OpenRouter",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "zai/glm-4-5-flash": {
           "input_usd_per_m": 0.0,
           "output_usd_per_m": 0.0,
-          "cached_usd_per_m": 0.0
+          "cached_usd_per_m": 0.0,
+          "cache_hit_rate": 0.0
         }
       },
-      "notes": "Completely free. Rate-limited."
+      "notes": "FREE. Rate-limited. Only for throwaway tasks."
     },
     {
       "id": "api-minimax",
-      "display_name": "MiniMax-M2.5 API",
+      "display_name": "MiniMax API (M2.5)",
       "provider": "MiniMax",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "minimax/minimax-m2-5": {
           "input_usd_per_m": 0.3,
           "output_usd_per_m": 1.2,
-          "cached_usd_per_m": 0.03
+          "cached_usd_per_m": 0.07,
+          "cache_hit_rate": 0.8
         }
-      }
+      },
+      "notes": "Cheapest non-free API. Great librarian/retrieval. Bad executor."
     },
     {
       "id": "api-minimax-7",
-      "display_name": "MiniMax-M2.7 API",
+      "display_name": "MiniMax API (M2.7)",
       "provider": "MiniMax",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "minimax/minimax-m2-7": {
           "input_usd_per_m": 0.3,
-          "output_usd_per_m": 1.2,
-          "cached_usd_per_m": 0.06
+          "output_usd_per_m": 1.3,
+          "cached_usd_per_m": 0.07,
+          "cache_hit_rate": 0.8
         }
-      }
+      },
+      "notes": "Latest MiniMax. Marginally better than M2.5."
     },
     {
       "id": "api-devstral",
-      "display_name": "Devstral 2 (Free)",
+      "display_name": "Mistral API (Devstral 2 \u2014 Free)",
       "provider": "Mistral",
       "type": "per_token",
       "cost_usd_per_month": 0,
-      "credit_pool_usd": null,
       "models": {
         "mistral/devstral-2": {
           "input_usd_per_m": 0.0,
           "output_usd_per_m": 0.0,
-          "cached_usd_per_m": 0.0
+          "cached_usd_per_m": 0.0,
+          "cache_hit_rate": 0.0
         }
       },
-      "notes": "Free on Mistral API. Rate-limited."
+      "notes": "FREE on Mistral API. SWE-bench 62.8%. Rate-limited. Surprisingly capable for code."
+    },
+    {
+      "id": "openrouter-payg",
+      "display_name": "OpenRouter Pay-as-you-go",
+      "provider": "OpenRouter",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "models": {
+        "zai/glm-5-1": {
+          "input_usd_per_m": 1.48,
+          "output_usd_per_m": 4.64,
+          "cached_usd_per_m": 0.37,
+          "cache_hit_rate": 0.75
+        },
+        "zai/glm-5": {
+          "input_usd_per_m": 1.06,
+          "output_usd_per_m": 3.17,
+          "cached_usd_per_m": 0.26,
+          "cache_hit_rate": 0.75
+        },
+        "moonshot/kimi-k2-6": {
+          "input_usd_per_m": 0.63,
+          "output_usd_per_m": 3.17,
+          "cached_usd_per_m": 0.16,
+          "cache_hit_rate": 0.8
+        },
+        "moonshot/kimi-k2-5": {
+          "input_usd_per_m": 0.63,
+          "output_usd_per_m": 3.17,
+          "cached_usd_per_m": 0.16,
+          "cache_hit_rate": 0.8
+        },
+        "minimax/minimax-m2-5": {
+          "input_usd_per_m": 0.32,
+          "output_usd_per_m": 1.27,
+          "cached_usd_per_m": 0.07,
+          "cache_hit_rate": 0.8
+        },
+        "minimax/minimax-m2-7": {
+          "input_usd_per_m": 0.32,
+          "output_usd_per_m": 1.37,
+          "cached_usd_per_m": 0.07,
+          "cache_hit_rate": 0.8
+        },
+        "mistral/devstral-2": {
+          "input_usd_per_m": 0.0,
+          "output_usd_per_m": 0.0,
+          "cached_usd_per_m": 0.0,
+          "cache_hit_rate": 0.0
+        }
+      },
+      "notes": "5.5% platform fee on top of native model rates. Access to 300+ models. No subscription \u2014 pure pay-per-token. BYOK: 1M free reqs/month."
     }
   ]
 }
