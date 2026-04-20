@@ -1,0 +1,963 @@
+{
+  "_comment": "LLM model + plan capability database for oh-my-openagent optimizer. April 2026.",
+  "skills": {
+    "vibe": {
+      "description": "Overall quality feel \u2014 does output feel right, polished, coherent? High vibe = great at zero-shot, nuanced, literary.",
+      "mandatory": true
+    },
+    "hardworkingness": {
+      "description": "Does the model actually do the full task without cutting corners, summarizing instead of doing, or giving up early?",
+      "mandatory": true
+    },
+    "agentic": {
+      "description": "Quality of tool use, multi-step planning, loop recovery, and self-correction in autonomous agent loops.",
+      "mandatory": true
+    },
+    "creative": {
+      "description": "Strength at open-ended generation, lateral thinking, novel solutions, design, storytelling.",
+      "mandatory": false
+    },
+    "specialist": {
+      "description": "Depth in a specific domain (code, math, science). High = near-expert precision in its niche.",
+      "mandatory": false
+    },
+    "speed": {
+      "description": "Latency + throughput. How fast does it produce usable output at scale?",
+      "mandatory": false
+    },
+    "instruction_following": {
+      "description": "How faithfully does the model follow complex, multi-constraint instructions without drifting?",
+      "mandatory": false
+    },
+    "librarian": {
+      "description": "Ability to retrieve, organize, and synthesize information from large context windows accurately.",
+      "mandatory": false
+    },
+    "context_fidelity": {
+      "description": "How well does the model stay grounded in provided context without hallucinating or contradicting it?",
+      "mandatory": false
+    }
+  },
+  "models": {
+    "anthropic/claude-opus-4-7": {
+      "display_name": "Claude Opus 4.7",
+      "skills": {
+        "vibe": 10,
+        "hardworkingness": 9,
+        "agentic": 9,
+        "creative": 8,
+        "specialist": 8,
+        "instruction_following": 10,
+        "context_fidelity": 9
+      },
+      "notes": "Best overall. Highest SWE-bench (82%). Exceptional instruction fidelity and self-correction. Expensive.",
+      "benchmarks": {
+        "swe_verified": 82.0,
+        "swe_rank": 1
+      },
+      "api_rate": {
+        "input": 5.0,
+        "output": 25.0,
+        "cached": 0.5,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "anthropic/claude-opus-4-6": {
+      "display_name": "Claude Opus 4.6",
+      "skills": {
+        "vibe": 9,
+        "hardworkingness": 8,
+        "agentic": 8,
+        "creative": 8,
+        "specialist": 7,
+        "instruction_following": 9,
+        "context_fidelity": 9
+      },
+      "notes": "Previous gen Opus. Slightly below 4.7 on benchmarks but still top-tier. Good fallback.",
+      "benchmarks": {
+        "swe_verified": 78.2,
+        "swe_rank": 4
+      },
+      "api_rate": {
+        "input": 5.0,
+        "output": 25.0,
+        "cached": 0.5,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "anthropic/claude-sonnet-4-6": {
+      "display_name": "Claude Sonnet 4.6",
+      "skills": {
+        "vibe": 8,
+        "hardworkingness": 7,
+        "agentic": 7,
+        "creative": 7,
+        "specialist": 7,
+        "speed": 7,
+        "instruction_following": 8,
+        "context_fidelity": 8
+      },
+      "notes": "Balanced mid-tier. Good for tasks where Opus is overkill. Noticeably worse at multi-step agentic loops.",
+      "benchmarks": {
+        "swe_verified": 77.4,
+        "swe_rank": 6
+      },
+      "api_rate": {
+        "input": 3.0,
+        "output": 15.0,
+        "cached": 0.3,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "anthropic/claude-haiku-4-5": {
+      "display_name": "Claude Haiku 4.5",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 5,
+        "agentic": 4,
+        "speed": 9,
+        "instruction_following": 6
+      },
+      "notes": "Fast and cheap. Cuts corners on complex tasks. Not suitable for autonomous loops. Good for triage/routing.",
+      "benchmarks": {
+        "swe_verified": 66.6,
+        "swe_rank": 29
+      },
+      "api_rate": {
+        "input": 1.0,
+        "output": 5.0,
+        "cached": 0.1,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "openai/gpt-5-4": {
+      "display_name": "GPT-5.4",
+      "skills": {
+        "vibe": 7,
+        "hardworkingness": 9,
+        "agentic": 8,
+        "creative": 5,
+        "specialist": 10,
+        "instruction_following": 8,
+        "context_fidelity": 7
+      },
+      "notes": "Workhouse specialist. Best-in-class for precise technical execution, structured output, math. Low creative flair. Tends to be literal.",
+      "benchmarks": {
+        "swe_verified": 78.2,
+        "swe_rank": 3
+      },
+      "api_rate": {
+        "input": 2.5,
+        "output": 15.0,
+        "cached": 0.25,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "openai/gpt-5-3-codex": {
+      "display_name": "GPT-5.3 Codex",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 10,
+        "agentic": 8,
+        "specialist": 10,
+        "speed": 6,
+        "instruction_following": 9
+      },
+      "notes": "Purpose-built for code. Extremely thorough, will actually write the whole file. Less creative, very systematic. Ideal for Hephaestus.",
+      "benchmarks": {
+        "swe_verified": 78.0,
+        "swe_rank": 5
+      },
+      "api_rate": {
+        "input": 1.5,
+        "output": 6.0,
+        "cached": 0.15,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "openai/gpt-5-2": {
+      "display_name": "GPT-5.2",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 8,
+        "agentic": 7,
+        "specialist": 9,
+        "instruction_following": 8
+      },
+      "notes": "Older GPT-5 gen. Solid specialist but outclassed by 5.3 Codex and 5.4 in most coding scenarios.",
+      "benchmarks": {
+        "swe_verified": 75.8,
+        "swe_rank": 10
+      },
+      "api_rate": {
+        "input": 1.25,
+        "output": 10.0,
+        "cached": 0.1,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "openai/gpt-5-4-mini": {
+      "display_name": "GPT-5.4 Mini",
+      "skills": {
+        "vibe": 5,
+        "hardworkingness": 6,
+        "agentic": 5,
+        "specialist": 7,
+        "speed": 9,
+        "instruction_following": 7
+      },
+      "notes": "Cheap and fast. Good for structured extraction, routing, summarization. Weak at sustained reasoning.",
+      "benchmarks": {
+        "swe_verified": 73.0,
+        "swe_rank": 17
+      },
+      "api_rate": {
+        "input": 0.75,
+        "output": 4.5,
+        "cached": 0.075,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "google/gemini-3-1-pro": {
+      "display_name": "Gemini 3.1 Pro",
+      "skills": {
+        "vibe": 8,
+        "hardworkingness": 7,
+        "agentic": 5,
+        "creative": 10,
+        "specialist": 7,
+        "librarian": 9,
+        "context_fidelity": 8
+      },
+      "notes": "Best creative model. Excellent at multimodal, long-context synthesis, design tasks. Agentic tool calls are unreliable \u2014 often hallucinates tool names or misformats JSON. Do NOT use as primary executor.",
+      "benchmarks": {
+        "swe_verified": 78.8,
+        "swe_rank": 2
+      },
+      "api_rate": {
+        "input": 2.0,
+        "output": 12.0,
+        "cached": 0.2,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "google/gemini-3-pro": {
+      "display_name": "Gemini 3 Pro",
+      "skills": {
+        "vibe": 7,
+        "hardworkingness": 6,
+        "agentic": 4,
+        "creative": 9,
+        "librarian": 8,
+        "context_fidelity": 7
+      },
+      "notes": "Previous gen Gemini Pro. Good creative fallback. Same agentic weaknesses as 3.1.",
+      "benchmarks": {
+        "swe_verified": 76.4,
+        "swe_rank": 8
+      },
+      "api_rate": {
+        "input": 2.0,
+        "output": 12.0,
+        "cached": 0.2,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "google/gemini-3-flash": {
+      "display_name": "Gemini 3 Flash",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 5,
+        "agentic": 3,
+        "creative": 7,
+        "speed": 10,
+        "librarian": 6
+      },
+      "notes": "Fastest Gemini. Very weak at agentic tasks. Good for quick creative drafts or fast lookups.",
+      "benchmarks": {
+        "swe_verified": 75.0,
+        "swe_rank": 11
+      },
+      "api_rate": {
+        "input": 0.5,
+        "output": 3.0,
+        "cached": 0.05,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "zai/glm-5-1": {
+      "display_name": "GLM-5.1",
+      "skills": {
+        "vibe": 7,
+        "hardworkingness": 8,
+        "agentic": 8,
+        "specialist": 9,
+        "instruction_following": 8,
+        "context_fidelity": 7
+      },
+      "notes": "MIT open-weight. SWE-bench Pro #1 (58.4), ties GPT-5.4. Solid executor, strong on structured code tasks. Good GPT-5.4 replacement at ~3x lower cost. Less polished prose output.",
+      "benchmarks": {
+        "swe_verified": 76.4,
+        "swe_rank": 9,
+        "swe_pro": 58.4
+      },
+      "api_rate": {
+        "input": 1.4,
+        "output": 4.4,
+        "cached": 0.19,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "zai/glm-5": {
+      "display_name": "GLM-5",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 7,
+        "agentic": 6,
+        "specialist": 7,
+        "instruction_following": 7
+      },
+      "notes": "Previous GLM gen. Decent but clearly below GLM-5.1. Budget fallback.",
+      "benchmarks": {
+        "swe_verified": 71.4,
+        "swe_rank": 20
+      },
+      "api_rate": {
+        "input": 1.0,
+        "output": 3.2,
+        "cached": 0.2,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "zai/glm-4-7": {
+      "display_name": "GLM-4.7",
+      "skills": {
+        "vibe": 5,
+        "hardworkingness": 6,
+        "agentic": 5,
+        "speed": 8,
+        "instruction_following": 6
+      },
+      "notes": "Cheap speed-tier GLM. SWE 69.4%. Reasonable for simple speed tasks if MiniMax is unavailable.",
+      "benchmarks": {
+        "swe_verified": 69.4,
+        "swe_rank": 26
+      },
+      "api_rate": {
+        "input": 0.6,
+        "output": 2.2,
+        "cached": 0.11,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "zai/glm-4-5-flash": {
+      "display_name": "GLM-4.5-Flash",
+      "skills": {
+        "vibe": 3,
+        "hardworkingness": 4,
+        "agentic": 2,
+        "speed": 9
+      },
+      "notes": "FREE. Rate-limited. Only use for throwaway tasks \u2014 triage, ping, simple formatting. Will fail or hallucinate on anything complex.",
+      "benchmarks": {
+        "swe_verified": 0.0,
+        "swe_rank": 99
+      },
+      "api_rate": {
+        "input": 0.0,
+        "output": 0.0,
+        "cached": 0.0,
+        "cache_hit_rate": 0.0
+      }
+    },
+    "moonshot/kimi-k2-6": {
+      "display_name": "Kimi K2.6",
+      "skills": {
+        "vibe": 7,
+        "hardworkingness": 9,
+        "agentic": 9,
+        "specialist": 8,
+        "instruction_following": 8
+      },
+      "notes": "Released 2026-04-20. SWE-bench Pro #1 (58.6, beats GPT-5.4). 300 native parallel sub-agents. Exceptionally agentic \u2014 built for autonomous multi-step execution. Strong Claude Opus alt at ~8x lower cost. Pricing unconfirmed (using K2.5 rate).",
+      "benchmarks": {
+        "swe_verified": 70.0,
+        "swe_rank": 22,
+        "swe_pro": 58.6
+      },
+      "api_rate": {
+        "input": 0.6,
+        "output": 3.0,
+        "cached": 0.1,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "moonshot/kimi-k2-5": {
+      "display_name": "Kimi K2.5",
+      "skills": {
+        "vibe": 7,
+        "hardworkingness": 8,
+        "agentic": 8,
+        "specialist": 7,
+        "instruction_following": 7
+      },
+      "notes": "Previous Kimi. Same price as K2.6, slightly lower SWE pro score (53.4 vs 58.6). Use K2.6 if available.",
+      "benchmarks": {
+        "swe_verified": 70.0,
+        "swe_rank": 22
+      },
+      "api_rate": {
+        "input": 0.6,
+        "output": 3.0,
+        "cached": 0.1,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "minimax/minimax-m2-5": {
+      "display_name": "MiniMax-M2.5",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 3,
+        "agentic": 4,
+        "speed": 8,
+        "librarian": 9,
+        "context_fidelity": 8
+      },
+      "notes": "Great librarian \u2014 excels at retrieval, summarization, and synthesis over huge context (1M tokens). LAZY on open-ended or broad tasks. Will produce minimal output unless the task is highly specified. Do not use as an executor.",
+      "benchmarks": {
+        "swe_verified": 74.2,
+        "swe_rank": 14
+      },
+      "api_rate": {
+        "input": 0.3,
+        "output": 1.2,
+        "cached": 0.03,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "minimax/minimax-m2-7": {
+      "display_name": "MiniMax-M2.7",
+      "skills": {
+        "vibe": 6,
+        "hardworkingness": 4,
+        "agentic": 4,
+        "speed": 8,
+        "librarian": 9,
+        "context_fidelity": 8
+      },
+      "notes": "Latest MiniMax. Marginally better than M2.5 on benchmarks. Same laziness profile.",
+      "benchmarks": {
+        "swe_verified": 73.8,
+        "swe_rank": 15
+      },
+      "api_rate": {
+        "input": 0.3,
+        "output": 1.2,
+        "cached": 0.06,
+        "cache_hit_rate": 0.6
+      }
+    },
+    "mistral/devstral-2": {
+      "display_name": "Devstral 2",
+      "skills": {
+        "vibe": 5,
+        "hardworkingness": 7,
+        "agentic": 6,
+        "specialist": 8,
+        "instruction_following": 7
+      },
+      "notes": "Free on Mistral API. SWE-bench 62.8%. Surprisingly capable coder for zero cost. Limited by rate limits and no tool-call reliability. Good opportunistic use.",
+      "benchmarks": {
+        "swe_verified": 62.8,
+        "swe_rank": 32
+      },
+      "api_rate": {
+        "input": 0.0,
+        "output": 0.0,
+        "cached": 0.0,
+        "cache_hit_rate": 0.0
+      }
+    }
+  },
+  "plans": [
+    {
+      "id": "claude-pro",
+      "display_name": "Claude Code Pro",
+      "provider": "Anthropic",
+      "type": "recurrent",
+      "cost_usd_per_month": 20,
+      "models": {
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-haiku-4-5": {
+          "request_weight": 1.0
+        }
+      },
+      "quota": {
+        "tokens_per_day": 211200,
+        "notes": "~44K tokens per 5h window \u00d7 4.8 windows/day. Shared across all models in plan."
+      },
+      "notes": "No Opus 4.7. Quota shared pool across all agents using this plan."
+    },
+    {
+      "id": "claude-max-5x",
+      "display_name": "Claude Code Max 5\u00d7",
+      "provider": "Anthropic",
+      "type": "recurrent",
+      "cost_usd_per_month": 100,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-haiku-4-5": {
+          "request_weight": 1.0
+        }
+      },
+      "quota": {
+        "tokens_per_day": 422400,
+        "notes": "5\u00d7 Pro quota. Priority access."
+      },
+      "notes": "First Claude plan that includes Opus 4.7."
+    },
+    {
+      "id": "claude-max-20x",
+      "display_name": "Claude Code Max 20\u00d7",
+      "provider": "Anthropic",
+      "type": "recurrent",
+      "cost_usd_per_month": 200,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 1.0
+        },
+        "anthropic/claude-haiku-4-5": {
+          "request_weight": 1.0
+        }
+      },
+      "quota": {
+        "tokens_per_day": 1056000,
+        "notes": "20\u00d7 Pro quota. Zero-wait priority."
+      }
+    },
+    {
+      "id": "chatgpt-plus",
+      "display_name": "ChatGPT Plus",
+      "provider": "OpenAI",
+      "type": "recurrent",
+      "cost_usd_per_month": 20,
+      "models": {
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 1.0
+        }
+      },
+      "quota": {
+        "tokens_per_day": 336000,
+        "notes": "~168 Codex CLI msgs per 5h window \u00d7 2K avg tokens \u00d7 4.8 windows/day."
+      }
+    },
+    {
+      "id": "chatgpt-pro",
+      "display_name": "ChatGPT Pro",
+      "provider": "OpenAI",
+      "type": "recurrent",
+      "cost_usd_per_month": 200,
+      "models": {
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-3-codex": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-2": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 1.0
+        }
+      },
+      "quota": {
+        "tokens_per_day": 2240000,
+        "notes": "~1120 msgs per 5h window. 10\u00d7 Plus. Unlocks GPT-5.3 Codex."
+      }
+    },
+    {
+      "id": "cursor-pro",
+      "display_name": "Cursor Pro",
+      "provider": "Cursor",
+      "type": "per_token",
+      "cost_usd_per_month": 20,
+      "credit_pool_usd": 20,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 4.5
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.5
+        }
+      },
+      "notes": "PURE PAY-PER-TOKEN. $20 credit pool billed at API rates. request_weight = relative token-cost multiplier vs gpt-5-4 (1.0 baseline). Opus 4.7 burns credits ~7.5\u00d7 faster."
+    },
+    {
+      "id": "cursor-pro-plus",
+      "display_name": "Cursor Pro+",
+      "provider": "Cursor",
+      "type": "per_token",
+      "cost_usd_per_month": 60,
+      "credit_pool_usd": 70,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 4.5
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.5
+        }
+      },
+      "notes": "$70 credit pool. ~3\u00d7 Pro."
+    },
+    {
+      "id": "cursor-ultra",
+      "display_name": "Cursor Ultra",
+      "provider": "Cursor",
+      "type": "per_token",
+      "cost_usd_per_month": 200,
+      "credit_pool_usd": 400,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 4.5
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "openai/gpt-5-4-mini": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.5
+        }
+      },
+      "notes": "$400 credit pool. ~20\u00d7 Pro."
+    },
+    {
+      "id": "copilot-pro",
+      "display_name": "Copilot Pro",
+      "provider": "GitHub",
+      "type": "recurrent",
+      "cost_usd_per_month": 10,
+      "models": {
+        "anthropic/claude-opus-4-6": {
+          "request_weight": 7.5
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-pro": {
+          "request_weight": 3.5
+        }
+      },
+      "quota": {
+        "requests_per_month": 300,
+        "notes": "300 premium requests/month total across all models. $0.04/extra req."
+      },
+      "notes": "Very limited quota. Mainly useful as a cheap top-up plan."
+    },
+    {
+      "id": "copilot-pro-plus",
+      "display_name": "Copilot Pro+",
+      "provider": "GitHub",
+      "type": "recurrent",
+      "cost_usd_per_month": 39,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 7.5
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        }
+      },
+      "quota": {
+        "requests_per_month": 1500,
+        "notes": "1,500 premium requests/month. 5\u00d7 Pro."
+      },
+      "notes": "Best value Copilot plan. Only plan with Opus 4.7."
+    },
+    {
+      "id": "windsurf-pro",
+      "display_name": "Windsurf Pro",
+      "provider": "Codeium",
+      "type": "recurrent",
+      "cost_usd_per_month": 20,
+      "models": {
+        "anthropic/claude-opus-4-7": {
+          "request_weight": 7.5
+        },
+        "anthropic/claude-sonnet-4-6": {
+          "request_weight": 4.5
+        },
+        "openai/gpt-5-4": {
+          "request_weight": 1.0
+        },
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        }
+      },
+      "quota": {
+        "tokens_per_day": 33333,
+        "notes": "500 credits/month with daily rate limits. Refreshes daily and weekly."
+      },
+      "notes": "SWE-1 access. Daily rate limits make it unsuitable as a primary plan at volume."
+    },
+    {
+      "id": "gemini-free",
+      "display_name": "Gemini Code Assist (Free)",
+      "provider": "Google",
+      "type": "recurrent",
+      "cost_usd_per_month": 0,
+      "models": {
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.5
+        }
+      },
+      "quota": {
+        "tokens_per_day": 2000000,
+        "notes": "1,000 req/day \u00d7 ~2K tokens avg."
+      },
+      "notes": "Best free plan for creative tasks. No credit card required."
+    },
+    {
+      "id": "gemini-std",
+      "display_name": "Gemini Code Assist Standard",
+      "provider": "Google",
+      "type": "recurrent",
+      "cost_usd_per_month": 19,
+      "models": {
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.5
+        }
+      },
+      "quota": {
+        "tokens_per_day": 3000000,
+        "notes": "1,500 req/day \u00d7 ~2K tokens avg."
+      }
+    },
+    {
+      "id": "google-ai-pro",
+      "display_name": "Google AI Pro",
+      "provider": "Google",
+      "type": "recurrent",
+      "cost_usd_per_month": 19.99,
+      "models": {
+        "google/gemini-3-1-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-pro": {
+          "request_weight": 3.5
+        },
+        "google/gemini-3-flash": {
+          "request_weight": 0.5
+        }
+      },
+      "quota": {
+        "tokens_per_day": 3000000,
+        "notes": "1,500 CLI req/day. Includes Veo 3.1."
+      },
+      "notes": "Essentially same as Gemini Std but targets CLI (gemini CLI) usage."
+    },
+    {
+      "id": "api-kimi-k2-6",
+      "display_name": "Kimi K2.6 API",
+      "provider": "Moonshot",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "moonshot/kimi-k2-6": {
+          "input_usd_per_m": 0.6,
+          "output_usd_per_m": 3.0,
+          "cached_usd_per_m": 0.1
+        }
+      },
+      "notes": "Pure API. No subscription. Pricing unconfirmed \u2014 using K2.5 rate as proxy. SWE Pro #1."
+    },
+    {
+      "id": "api-kimi-k2-5",
+      "display_name": "Kimi K2.5 API",
+      "provider": "Moonshot",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "moonshot/kimi-k2-5": {
+          "input_usd_per_m": 0.6,
+          "output_usd_per_m": 3.0,
+          "cached_usd_per_m": 0.1
+        }
+      },
+      "notes": "Available on OpenRouter."
+    },
+    {
+      "id": "api-glm-5-1",
+      "display_name": "GLM-5.1 API",
+      "provider": "zAI",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "zai/glm-5-1": {
+          "input_usd_per_m": 1.4,
+          "output_usd_per_m": 4.4,
+          "cached_usd_per_m": 0.19
+        }
+      },
+      "notes": "Available via OpenRouter. MIT open-weight."
+    },
+    {
+      "id": "api-glm-4-7",
+      "display_name": "GLM-4.7 API",
+      "provider": "zAI",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "zai/glm-4-7": {
+          "input_usd_per_m": 0.6,
+          "output_usd_per_m": 2.2,
+          "cached_usd_per_m": 0.11
+        }
+      }
+    },
+    {
+      "id": "api-glm-free",
+      "display_name": "GLM-4.5-Flash (Free)",
+      "provider": "zAI",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "zai/glm-4-5-flash": {
+          "input_usd_per_m": 0.0,
+          "output_usd_per_m": 0.0,
+          "cached_usd_per_m": 0.0
+        }
+      },
+      "notes": "Completely free. Rate-limited."
+    },
+    {
+      "id": "api-minimax",
+      "display_name": "MiniMax-M2.5 API",
+      "provider": "MiniMax",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "minimax/minimax-m2-5": {
+          "input_usd_per_m": 0.3,
+          "output_usd_per_m": 1.2,
+          "cached_usd_per_m": 0.03
+        }
+      }
+    },
+    {
+      "id": "api-minimax-7",
+      "display_name": "MiniMax-M2.7 API",
+      "provider": "MiniMax",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "minimax/minimax-m2-7": {
+          "input_usd_per_m": 0.3,
+          "output_usd_per_m": 1.2,
+          "cached_usd_per_m": 0.06
+        }
+      }
+    },
+    {
+      "id": "api-devstral",
+      "display_name": "Devstral 2 (Free)",
+      "provider": "Mistral",
+      "type": "per_token",
+      "cost_usd_per_month": 0,
+      "credit_pool_usd": null,
+      "models": {
+        "mistral/devstral-2": {
+          "input_usd_per_m": 0.0,
+          "output_usd_per_m": 0.0,
+          "cached_usd_per_m": 0.0
+        }
+      },
+      "notes": "Free on Mistral API. Rate-limited."
+    }
+  ]
+}
