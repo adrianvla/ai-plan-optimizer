@@ -1,0 +1,121 @@
+{
+  "_comment": "oh-my-openagent optimizer config. Edit this file to change your budget, roles, and workload. Skill names must match models.json → skills. Model keys must match models.json → models.",
+
+  "budget_usd": 60.0,
+  "max_plans_in_combo": 4,
+  "top_n": 15,
+
+  "roles": [
+    {
+      "name": "Orchestrator",
+      "prompts_per_week": 105,
+      "avg_input_tokens": 500000,
+      "avg_output_tokens": 200000,
+      "is_subagent": false,
+      "subagent_calls_per_prompt": 1,
+      "required_skills": {
+        "vibe":                  7,
+        "agentic":               8,
+        "hardworkingness":       7,
+        "instruction_following": 8
+      },
+      "skill_weights": {
+        "agentic":               2.0,
+        "instruction_following": 1.5
+      },
+      "preferred_models": [],
+      "notes": "~15 top-level messages/day. Routing + state context. TOP-LEVEL — billed by all request-counting plans."
+    },
+    {
+      "name": "Hard Coder",
+      "prompts_per_week": 105,
+      "avg_input_tokens": 7000000,
+      "avg_output_tokens": 3000000,
+      "is_subagent": true,
+      "subagent_calls_per_prompt": 1,
+      "required_skills": {
+        "hardworkingness": 8,
+        "specialist":      8,
+        "agentic":         7
+      },
+      "skill_weights": {
+        "hardworkingness": 2.0,
+        "specialist":      2.0
+      },
+      "preferred_models": [],
+      "notes": "Fires once per top-level task. Full repo context. Copilot does NOT bill subagent calls against request quota."
+    },
+    {
+      "name": "Planner",
+      "prompts_per_week": 35,
+      "avg_input_tokens": 4000000,
+      "avg_output_tokens": 1000000,
+      "is_subagent": true,
+      "subagent_calls_per_prompt": 1,
+      "required_skills": {
+        "vibe":             8,
+        "hardworkingness":  7,
+        "context_fidelity": 7
+      },
+      "skill_weights": {
+        "vibe":             1.5,
+        "context_fidelity": 1.5
+      },
+      "preferred_models": [],
+      "notes": "Fires on ~1/3 of tasks. Complex planning only."
+    },
+    {
+      "name": "Creative",
+      "prompts_per_week": 20,
+      "avg_input_tokens": 500000,
+      "avg_output_tokens": 300000,
+      "is_subagent": false,
+      "subagent_calls_per_prompt": 1,
+      "required_skills": {
+        "creative": 7,
+        "vibe":     7
+      },
+      "skill_weights": {
+        "creative": 2.5
+      },
+      "preferred_models": [],
+      "notes": "Less frequent, direct user-initiated calls."
+    },
+    {
+      "name": "Speed / Librarian",
+      "prompts_per_week": 100,
+      "avg_input_tokens": 200000,
+      "avg_output_tokens": 100000,
+      "is_subagent": true,
+      "subagent_calls_per_prompt": 3,
+      "required_skills": {
+        "speed": 6
+      },
+      "skill_weights": {
+        "speed":    2.0,
+        "librarian": 1.5
+      },
+      "preferred_models": [],
+      "notes": "High-frequency short lookups spawned by orchestrator. ~3 lookups per top-level call."
+    },
+    {
+      "name": "Hermes / OpenMAIC",
+      "prompts_per_week": 30000,
+      "avg_input_tokens": 2000,
+      "avg_output_tokens": 500,
+      "is_subagent": false,
+      "subagent_calls_per_prompt": 1,
+      "required_skills": {
+        "vibe":            4,
+        "hardworkingness": 4,
+        "agentic":         4
+      },
+      "skill_weights": {
+        "vibe":            1.0,
+        "hardworkingness": 1.0
+      },
+      "preferred_models": [],
+      "notes": "Hermes (Telegram agent) + OpenMAIC combined. 30k req/wk. Short context. Sonnet-level minimum — no haikus."
+    }
+  ]
+}
