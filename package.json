@@ -1,0 +1,9 @@
+{
+  "name": "llm-plan-optimizer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Live tier list editor for model skills",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

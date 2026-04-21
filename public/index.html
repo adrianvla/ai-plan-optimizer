@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Skill Tierlist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <h1>LLM SKILL TIERLIST</h1>
+            <span class="version-tag">LIVE JSON</span>
+        </div>
+        <div class="header-right">
+            <div id="save-status" class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">SYNCED</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">SKILLS</div>
+            <nav id="skill-tabs" class="tabs-nav"></nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="board-header">
+                <h2 id="current-skill-title">Loading Skill</h2>
+                <p id="current-skill-desc" class="skill-desc"></p>
+            </div>
+
+            <div class="board-meta">
+                <p>Drag model tiles across tiers. Every drop writes straight back to <code>models.json</code>.</p>
+            </div>
+
+            <div class="tier-board" id="tier-board">
+            </div>
+
+            <div class="unrated-section">
+                <div class="unrated-header">UNRATED POOL</div>
+                <div class="unrated-pool dropzone" data-tier="unrated" id="unrated-pool">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
