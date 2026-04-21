@@ -42,13 +42,15 @@
     "anthropic/claude-opus-4-7": {
       "display_name": "Claude Opus 4.7",
       "skills": {
-        "vibe": 8,
-        "hardworkingness": 9,
-        "agentic": 9,
-        "creative": 4,
-        "specialist": 8,
-        "instruction_following": 9,
-        "context_fidelity": 9
+        "vibe": 10,
+        "hardworkingness": 10,
+        "agentic": 9.75,
+        "creative": 4.5,
+        "specialist": 9.8333,
+        "instruction_following": 9.5,
+        "context_fidelity": 10,
+        "speed": 3.5,
+        "librarian": 8.625
       },
       "notes": "Best overall. Highest SWE-bench (82%). Exceptional instruction fidelity and self-correction. Expensive.",
       "benchmarks": {
@@ -59,13 +61,15 @@
     "anthropic/claude-opus-4-6": {
       "display_name": "Claude Opus 4.6",
       "skills": {
-        "vibe": 10,
-        "hardworkingness": 8,
-        "agentic": 8,
-        "creative": 4,
-        "specialist": 7,
-        "instruction_following": 9,
-        "context_fidelity": 9
+        "vibe": 9.75,
+        "hardworkingness": 9.75,
+        "agentic": 9.5,
+        "creative": 5,
+        "specialist": 9.5,
+        "instruction_following": 10,
+        "context_fidelity": 9.5,
+        "speed": 4,
+        "librarian": 8.5
       },
       "notes": "Previous gen Opus. Slightly below 4.7 on benchmarks but still top-tier. Good fallback.",
       "benchmarks": {
@@ -76,14 +80,15 @@
     "anthropic/claude-sonnet-4-6": {
       "display_name": "Claude Sonnet 4.6",
       "skills": {
-        "vibe": 7,
-        "hardworkingness": 7,
-        "agentic": 7,
-        "creative": 4,
+        "vibe": 9.5,
+        "hardworkingness": 8,
+        "agentic": 7.5,
+        "creative": 3.5,
         "specialist": 6,
-        "speed": 7,
+        "speed": 5.5,
         "instruction_following": 8,
-        "context_fidelity": 8
+        "context_fidelity": 7.75,
+        "librarian": 4
       },
       "notes": "Balanced mid-tier. Good for tasks where Opus is overkill. Noticeably worse at multi-step agentic loops.",
       "benchmarks": {
@@ -94,11 +99,15 @@
     "anthropic/claude-haiku-4-5": {
       "display_name": "Claude Haiku 4.5",
       "skills": {
-        "vibe": 3,
-        "hardworkingness": 2,
-        "agentic": 3,
+        "vibe": 2,
+        "hardworkingness": 2.75,
+        "agentic": 5.5,
         "speed": 9,
-        "instruction_following": 6
+        "instruction_following": 2.75,
+        "creative": 1,
+        "specialist": 1,
+        "librarian": 2,
+        "context_fidelity": 2
       },
       "notes": "Fast and cheap. Cuts corners on complex tasks. Not suitable for autonomous loops. Good for triage/routing.",
       "benchmarks": {
@@ -111,11 +120,13 @@
       "skills": {
         "vibe": 8,
         "hardworkingness": 9,
-        "agentic": 8,
-        "creative": 7,
+        "agentic": 9,
+        "creative": 8,
         "specialist": 10,
-        "instruction_following": 8,
-        "context_fidelity": 7
+        "instruction_following": 8.75,
+        "context_fidelity": 8.5,
+        "speed": 5.75,
+        "librarian": 8.875
       },
       "notes": "Workhouse specialist. Best-in-class for precise technical execution, structured output, math. Low creative flair. Tends to be literal.",
       "benchmarks": {
@@ -126,12 +137,15 @@
     "openai/gpt-5-4-mini": {
       "display_name": "GPT-5.4 Mini",
       "skills": {
-        "vibe": 6,
+        "vibe": 5.5,
         "hardworkingness": 6,
         "agentic": 7,
-        "specialist": 6,
-        "speed": 9,
-        "instruction_following": 7
+        "specialist": 5.5,
+        "speed": 8.6667,
+        "instruction_following": 7,
+        "creative": 4,
+        "librarian": 8.75,
+        "context_fidelity": 6
       },
       "notes": "Cheap and fast. Good for structured extraction, routing, summarization. Weak at sustained reasoning.",
       "benchmarks": {
@@ -142,12 +156,15 @@
     "openai/gpt-5-mini": {
       "display_name": "GPT-5 Mini",
       "skills": {
-        "vibe": 4,
-        "hardworkingness": 4,
+        "vibe": 2.5,
+        "hardworkingness": 2.5,
         "agentic": 5,
-        "specialist": 4,
-        "speed": 9,
-        "instruction_following": 7
+        "specialist": 3.5,
+        "speed": 8.8333,
+        "instruction_following": 2.5,
+        "creative": 2,
+        "librarian": 7,
+        "context_fidelity": 0.5
       },
       "notes": "Cheapest and fast. Good for structured extraction, summarization. Really weak at sustained reasoning.",
       "benchmarks": {
@@ -158,13 +175,15 @@
     "google/gemini-3-1-pro": {
       "display_name": "Gemini 3.1 Pro",
       "skills": {
-        "vibe": 6,
-        "hardworkingness": 6,
-        "agentic": 5,
+        "vibe": 7.8333,
+        "hardworkingness": 7,
+        "agentic": 4.5,
         "creative": 10,
-        "specialist": 8,
-        "librarian": 9,
-        "context_fidelity": 8
+        "specialist": 9.6667,
+        "librarian": 9.75,
+        "context_fidelity": 7.5,
+        "speed": 6,
+        "instruction_following": 6
       },
       "notes": "Best creative model. Excellent at multimodal, long-context synthesis, design tasks. Agentic tool calls are unreliable — often hallucinates tool names or misformats JSON. Do NOT use as primary executor.",
       "benchmarks": {
@@ -175,12 +194,15 @@
     "google/gemini-3-flash": {
       "display_name": "Gemini 3 Flash",
       "skills": {
-        "vibe": 6,
-        "hardworkingness": 5,
+        "vibe": 5,
+        "hardworkingness": 4,
         "agentic": 3,
         "creative": 6,
         "speed": 10,
-        "librarian": 6
+        "librarian": 6,
+        "specialist": 3.75,
+        "instruction_following": 4,
+        "context_fidelity": 1.5
       },
       "notes": "Fastest Gemini. Very weak at agentic tasks. Good for quick creative drafts or fast lookups.",
       "benchmarks": {
@@ -191,12 +213,15 @@
     "zai/glm-5-1": {
       "display_name": "GLM-5.1",
       "skills": {
-        "vibe": 8,
-        "hardworkingness": 8,
-        "agentic": 8,
-        "specialist": 9,
-        "instruction_following": 8,
-        "context_fidelity": 7
+        "vibe": 7.6667,
+        "hardworkingness": 8.5,
+        "agentic": 8.5,
+        "specialist": 8.5,
+        "instruction_following": 8.5,
+        "context_fidelity": 7,
+        "creative": 9,
+        "speed": 5,
+        "librarian": 9
       },
       "notes": "MIT open-weight. SWE-bench Pro #1 (58.4), ties GPT-5.4. Solid executor, strong on structured code tasks. Good GPT-5.4 replacement at ~3x lower cost. Less polished prose output.",
       "benchmarks": {
@@ -208,12 +233,15 @@
     "moonshot/kimi-k2-6": {
       "display_name": "Kimi K2.6",
       "skills": {
-        "vibe": 10,
-        "hardworkingness": 8,
-        "agentic": 9,
-        "specialist": 6,
-        "instruction_following": 8,
-        "creative": 9
+        "vibe": 9.5,
+        "hardworkingness": 9.5,
+        "agentic": 10,
+        "specialist": 9,
+        "instruction_following": 9,
+        "creative": 9.5,
+        "speed": 7,
+        "librarian": 10,
+        "context_fidelity": 9
       },
       "notes": "Released 2026-04-20. SWE-bench Pro #1 (58.6%, beats GPT-5.4). 300 native parallel sub-agents. Exceptionally agentic — built for autonomous multi-step execution. Opus 4.6 drop-in: same vibe & agentic quality, less specialist (6 vs 7), more creative (9). Pricing unconfirmed (using K2.5 rate ≈$0.60/$3.00/M).",
       "benchmarks": {
@@ -225,12 +253,15 @@
     "minimax/minimax-m2-5": {
       "display_name": "MiniMax-M2.5",
       "skills": {
-        "vibe": 4,
-        "hardworkingness": 4,
-        "agentic": 4,
+        "vibe": 2.75,
+        "hardworkingness": 3.5,
+        "agentic": 6,
         "speed": 8,
-        "librarian": 8,
-        "context_fidelity": 8
+        "librarian": 6.5,
+        "context_fidelity": 4,
+        "creative": 3,
+        "specialist": 3,
+        "instruction_following": 5
       },
       "notes": "Previous MiniMax gen. Slightly weaker than M2.7 but still strong long-context retrieval. Used by MiniMax coding plans and OpenCode Go.",
       "benchmarks": {
@@ -241,12 +272,15 @@
     "minimax/minimax-m2-7": {
       "display_name": "MiniMax-M2.7",
       "skills": {
-        "vibe": 5,
-        "hardworkingness": 4,
-        "agentic": 4,
-        "speed": 8,
-        "librarian": 9,
-        "context_fidelity": 8
+        "vibe": 7,
+        "hardworkingness": 6.5,
+        "agentic": 8,
+        "speed": 7.5,
+        "librarian": 9.5,
+        "context_fidelity": 8,
+        "creative": 7,
+        "specialist": 8,
+        "instruction_following": 7.5
       },
       "notes": "Latest MiniMax. Marginally better than M2.5 on benchmarks. Same laziness profile.",
       "benchmarks": {
@@ -257,11 +291,15 @@
     "mistral/devstral-2": {
       "display_name": "Devstral 2",
       "skills": {
-        "vibe": 5,
-        "hardworkingness": 7,
-        "agentic": 6,
-        "specialist": 8,
-        "instruction_following": 7
+        "hardworkingness": 3,
+        "agentic": 3.5,
+        "specialist": 4,
+        "instruction_following": 3,
+        "vibe": 3,
+        "creative": 0.5,
+        "speed": 8.5,
+        "librarian": 1,
+        "context_fidelity": 1
       },
       "notes": "Free on Mistral API. SWE-bench 62.8%. Surprisingly capable coder for zero cost. Limited by rate limits and no tool-call reliability. Good opportunistic use.",
       "benchmarks": {
@@ -274,10 +312,13 @@
       "skills": {
         "vibe": 6,
         "hardworkingness": 5,
-        "agentic": 3,
-        "creative": 7,
-        "speed": 10,
-        "librarian": 6
+        "agentic": 4,
+        "creative": 8.5,
+        "speed": 9.5,
+        "librarian": 8,
+        "specialist": 7,
+        "instruction_following": 4.5,
+        "context_fidelity": 3
       },
       "notes": "Updated Gemini Flash (3.1 gen). Very fast. Weak at agentic tasks. Good for quick creative drafts, fast lookups, and high-throughput routing. Same profile as Gemini 3 Flash but slightly improved quality.",
       "benchmarks": {

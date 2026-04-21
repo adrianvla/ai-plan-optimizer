@@ -27,23 +27,78 @@
         </aside>
 
         <main class="main-content">
-            <div class="board-header">
-                <h2 id="current-skill-title">Loading Skill</h2>
-                <p id="current-skill-desc" class="skill-desc"></p>
-            </div>
-
-            <div class="board-meta">
-                <p>Drag model tiles across tiers. Every drop writes straight back to <code>models.json</code>.</p>
-            </div>
-
-            <div class="tier-board" id="tier-board">
-            </div>
-
-            <div class="unrated-section">
-                <div class="unrated-header">UNRATED POOL</div>
-                <div class="unrated-pool dropzone" data-tier="unrated" id="unrated-pool">
+            <section id="tierlist-screen" class="screen screen-active">
+                <div class="board-header">
+                    <h2 id="current-skill-title">Loading Skill</h2>
+                    <p id="current-skill-desc" class="skill-desc"></p>
                 </div>
-            </div>
+
+                <div class="board-meta">
+                    <p>Drag model tiles across tiers. Order inside a tier matters: left-to-right position is linearly interpolated and every drop writes straight back to <code>models.json</code>.</p>
+                </div>
+
+                <section class="mode-launcher panel-block">
+                    <div>
+                        <div class="panel-kicker">Single-model rater</div>
+                        <p class="mode-copy">Open a dedicated screen for one model, rate every skill there, then bracket it against anchor models tier by tier.</p>
+                    </div>
+                    <div class="launcher-controls">
+                        <select id="rating-model-select" class="rating-select"></select>
+                        <button id="open-rating-screen-button" class="action-button" type="button">Open rater</button>
+                    </div>
+                </section>
+
+                <div class="tier-board" id="tier-board">
+                </div>
+
+                <div class="unrated-section">
+                    <div class="unrated-header">UNRATED POOL</div>
+                    <div class="unrated-pool dropzone" data-tier="unrated" id="unrated-pool">
+                    </div>
+                </div>
+            </section>
+
+            <section id="rating-screen" class="screen hidden">
+                <div class="rating-screen-shell">
+                    <div class="rating-screen-topbar">
+                        <button id="close-rating-screen-button" class="action-button action-button-muted" type="button">Back to tier list</button>
+                        <div>
+                            <div class="panel-kicker">Dedicated model rating</div>
+                            <h2 id="rating-screen-title" class="rating-screen-title">Model rater</h2>
+                        </div>
+                    </div>
+
+                    <div id="rating-model-spotlight" class="rating-model-spotlight"></div>
+
+                    <section id="rating-form-stage" class="rating-stage">
+                        <div id="rating-skill-form" class="rating-skill-form"></div>
+                        <div class="rating-screen-actions">
+                            <p id="rating-helper-text" class="rating-helper">Rate every skill for this model. Leave a skill marked unrated if you do not want to place it.</p>
+                            <button id="begin-rating-placement-button" class="action-button" type="button">Place all skills</button>
+                        </div>
+                    </section>
+
+                    <section id="rating-compare-stage" class="rating-stage hidden">
+                        <div class="panel-kicker">Bracket comparison</div>
+                        <h3 id="comparison-title" class="comparison-title">Compare models</h3>
+                        <p id="comparison-body" class="comparison-body"></p>
+                        <div class="comparison-cards">
+                            <div class="comparison-card comparison-card-candidate">
+                                <span class="comparison-label">Candidate</span>
+                                <strong id="comparison-candidate-name"></strong>
+                            </div>
+                            <div class="comparison-card comparison-card-reference">
+                                <span class="comparison-label">Current anchor</span>
+                                <strong id="comparison-reference-name"></strong>
+                            </div>
+                        </div>
+                        <div class="comparison-actions">
+                            <button id="comparison-better-button" class="action-button" type="button">Better</button>
+                            <button id="comparison-worse-button" class="action-button action-button-muted" type="button">Worse</button>
+                        </div>
+                    </section>
+                </div>
+            </section>
         </main>
     </div>
 

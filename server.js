@@ -8,6 +8,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 const rootDirectory = __dirname;
 const publicDirectory = path.join(rootDirectory, "public");
 const modelsFilePath = path.join(rootDirectory, "models.json");
+const configFilePath = path.join(rootDirectory, "config.json");
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -30,8 +31,16 @@ const server = http.createServer(async (request, response) => {
     const url = new URL(request.url, `http://${host}`);
 
     if (request.method === "GET" && url.pathname === "/api/models") {
-      const modelsData = await readModelsFile();
-      sendJson(response, 200, modelsData);
+      const [modelsData, configData] = await Promise.all([readModelsFile(), readConfigFile()]);
+      sendJson(response, 200, {
+        ...modelsData,
+        roles: configData.roles ?? [],
+        config: {
+          budget_usd: configData.budget_usd,
+          max_plans_in_combo: configData.max_plans_in_combo,
+          top_n: configData.top_n
+        }
+      });
       return;
     }
 
@@ -65,7 +74,7 @@ function enqueueSkillUpdate(skillKey, payload) {
 }
 
 async function updateSkillValue(skillKey, payload) {
-  validateUpdatePayload(skillKey, payload);
+  const updates = normalizeUpdatesPayload(skillKey, payload);
 
   const modelsData = await readModelsFile();
 
@@ -73,37 +82,38 @@ async function updateSkillValue(skillKey, payload) {
     throw createHttpError(404, `Unknown skill: ${skillKey}`);
   }
 
-  if (!modelsData.models || !modelsData.models[payload.modelId]) {
-    throw createHttpError(404, `Unknown model: ${payload.modelId}`);
-  }
+  updates.forEach(update => {
+    if (!modelsData.models || !modelsData.models[update.modelId]) {
+      throw createHttpError(404, `Unknown model: ${update.modelId}`);
+    }
 
-  const model = modelsData.models[payload.modelId];
-  const nextSkills = {
-    ...(model.skills ?? {})
-  };
+    const model = modelsData.models[update.modelId];
+    const nextSkills = {
+      ...(model.skills ?? {})
+    };
 
-  if (payload.value === null) {
-    delete nextSkills[skillKey];
-  } else {
-    nextSkills[skillKey] = payload.value;
-  }
+    if (update.value === null) {
+      delete nextSkills[skillKey];
+    } else {
+      nextSkills[skillKey] = update.value;
+    }
 
-  modelsData.models[payload.modelId] = {
-    ...model,
-    skills: nextSkills
-  };
+    modelsData.models[update.modelId] = {
+      ...model,
+      skills: nextSkills
+    };
+  });
 
   await writeModelsFile(modelsData);
 
   return {
     ok: true,
-    modelId: payload.modelId,
     skillKey,
-    value: payload.value
+    updated: updates.length
   };
 }
 
-function validateUpdatePayload(skillKey, payload) {
+function normalizeUpdatesPayload(skillKey, payload) {
   if (!skillKey) {
     throw createHttpError(400, "Missing skill key");
   }
@@ -112,21 +122,44 @@ function validateUpdatePayload(skillKey, payload) {
     throw createHttpError(400, "Request body must be a JSON object");
   }
 
-  if (typeof payload.modelId !== "string" || payload.modelId.length === 0) {
+  const updates = Array.isArray(payload.updates)
+    ? payload.updates
+    : [{ modelId: payload.modelId, value: payload.value }];
+
+  if (updates.length === 0) {
+    throw createHttpError(400, "At least one update is required");
+  }
+
+  updates.forEach(update => validateSingleUpdate(update));
+
+  return updates;
+}
+
+function validateSingleUpdate(update) {
+  if (!update || typeof update !== "object") {
+    throw createHttpError(400, "Each update must be an object");
+  }
+
+  if (typeof update.modelId !== "string" || update.modelId.length === 0) {
     throw createHttpError(400, "modelId must be a non-empty string");
   }
 
-  if (payload.value !== null && !Number.isInteger(payload.value)) {
-    throw createHttpError(400, "value must be an integer tier or null");
+  if (update.value !== null && (typeof update.value !== "number" || !Number.isFinite(update.value))) {
+    throw createHttpError(400, "value must be a number or null");
   }
 
-  if (Number.isInteger(payload.value) && (payload.value < 0 || payload.value > 10)) {
+  if (typeof update.value === "number" && (update.value < 0 || update.value > 10)) {
     throw createHttpError(400, "value must be between 0 and 10");
   }
 }
 
 async function readModelsFile() {
   const fileContent = await fs.readFile(modelsFilePath, "utf8");
+  return JSON.parse(fileContent);
+}
+
+async function readConfigFile() {
+  const fileContent = await fs.readFile(configFilePath, "utf8");
   return JSON.parse(fileContent);
 }
 
